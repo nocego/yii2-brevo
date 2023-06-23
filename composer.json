@@ -1,0 +1,43 @@
+{
+  "name": "nocego/yii2-brevo",
+  "description": "The Brevo integration for the Yii framework",
+  "keywords": [
+    "yii2",
+    "brevo",
+    "sms",
+    "whatsapp",
+    "message",
+    "MessageProvider"
+  ],
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "nocego"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "yiisoft/yii2": ">=2.0.4",
+    "simialbi/yii2-simialbi-base": ">=0.13.1 <1.0 | ^1.0.0"
+  },
+  "require-dev": {
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
+  "config": {
+    "secure-http": false,
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  }
+}
