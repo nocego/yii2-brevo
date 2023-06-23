@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2\brevo;
+namespace nocego\brevo;
 
 use simialbi\yii2\sms\BaseProvider;
 use simialbi\yii2\sms\MessageInterface;

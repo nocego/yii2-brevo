@@ -17,7 +17,7 @@
     }
   ],
   "require": {
-    "php": ">=7.4.0",
+    "php": ">=8.2",
     "yiisoft/yii2": ">=2.0.4",
     "simialbi/yii2-simialbi-base": ">=0.13.1 <1.0 | ^1.0.0"
   },
@@ -39,5 +39,8 @@
     "allow-plugins": {
       "yiisoft/yii2-composer": true
     }
+  },
+  "autoload": {
+    "psr-4": { "nocego\\brevo\\": "src" }
   }
 }
