@@ -19,7 +19,8 @@
   "require": {
     "php": ">=8.1",
     "yiisoft/yii2": ">=2.0.4",
-    "simialbi/yii2-simialbi-base": ">=0.13.1 <1.0 | ^1.0.0"
+    "simialbi/yii2-simialbi-base": ">=0.13.1 <1.0 | ^1.0.0",
+    "getbrevo/brevo-php": "1.x.x"
   },
   "require-dev": {
   },

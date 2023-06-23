@@ -2,9 +2,10 @@
 
 namespace nocego\brevo;
 
+use simialbi\yii2\sms\BaseMessage;
 use simialbi\yii2\sms\MessageInterface;
 
-class Message extends \simialbi\yii2\sms\BaseMessage
+class Message extends BaseMessage
 {
     /**
      * @inheritDoc
