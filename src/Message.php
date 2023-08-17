@@ -3,48 +3,59 @@
 namespace nocego\brevo;
 
 use simialbi\yii2\sms\BaseMessage;
-use simialbi\yii2\sms\MessageInterface;
 
 class Message extends BaseMessage
 {
     /**
+     * @var string Region (language) of the message
+     */
+    private string $_region = 'de';
+
+    /**
+     * @var string|null Sender of the message
+     * String with a maximum length of 11 characters
+     */
+    private ?string $_from = null;
+
+    /**
+     * @var string|array|null Recipient of the message
+     * String with the format +xxxxxxxxxxx
+     */
+    private string|array|null $_to = null;
+
+    /**
+     * @var string|null Content of the message
+     */
+    private ?string $_body = null;
+
+    /**
+     * @var string Type of the message
+     * Possible values: sms, whatsapp
+     */
+    private string $_type = MessageProvider::SMS;
+
+    /**
      * @inheritDoc
      */
-    public function setRegion(string $region): MessageInterface
+    public function getRegion(): string
     {
-        // TODO: Implement setRegion() method.
+        return $this->_region;
     }
 
     /**
      * @inheritDoc
      */
-    public function getFrom()
+    public function getFrom(): string|null
     {
-        // TODO: Implement getFrom() method.
+        return $this->_from;
     }
 
     /**
      * @inheritDoc
      */
-    public function setFrom(string $from = null): MessageInterface
+    public function getTo(): array|string|null
     {
-        // TODO: Implement setFrom() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getTo()
-    {
-        // TODO: Implement getTo() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setTo($to): MessageInterface
-    {
-        // TODO: Implement setTo() method.
+        return $this->_to;
     }
 
     /**
@@ -52,23 +63,85 @@ class Message extends BaseMessage
      */
     public function getSubject(): string
     {
-        // TODO: Implement getSubject() method.
+        return "";
+    }
+
+    /**
+     * get the body of the message
+     * @return string|null
+     */
+    public function getBody(): string|null
+    {
+        return $this->_body;
+    }
+
+    /**
+     * get the type of the message
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->_type;
     }
 
     /**
      * @inheritDoc
      */
-    public function setSubject(string $subject): MessageInterface
+    public function setRegion(string $region): self
     {
-        // TODO: Implement setSubject() method.
+        $this->_region = $region;
+
+        return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function setBody(string $text): MessageInterface
+    public function setFrom(string $from = null): self
     {
-        // TODO: Implement setBody() method.
+        $this->_from = $from;
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setTo($to): self
+    {
+        $this->_to = $to;
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSubject(string $subject): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBody(string $text): self
+    {
+        $this->_body = $text;
+
+        return $this;
+    }
+
+    /**
+     * set the type of the message
+     * @param string $type
+     * @return self
+     */
+    public function setType(string $type): self
+    {
+        $this->_type = $type;
+
+        return $this;
     }
 
     /**
@@ -76,6 +149,6 @@ class Message extends BaseMessage
      */
     public function toString(): string
     {
-        // TODO: Implement toString() method.
+        return $this->getBody();
     }
 }
