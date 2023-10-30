@@ -4,7 +4,7 @@ namespace nocego\brevo;
 
 use Brevo\Client\Api\ContactsApi;
 use Brevo\Client\Api\TransactionalSMSApi;
-use Brevo\Client\Api\WhatsappCampaignsApi;
+use Brevo\Client\Api\WhatsAppCampaignsApi;
 use Brevo\Client\ApiException;
 use Brevo\Client\Configuration;
 use Brevo\Client\Model\AddContactToList;
@@ -91,7 +91,7 @@ class MessageProvider extends BaseProvider
                 $result = $whatsappCampaignApiInstance->createWhatsAppTemplate($whatsappTemplate);
                 return $result->getId();
             } catch (Exception $e) {
-                throw new \yii\base\Exception('Exception when calling WhatsAppCampaignsApi->createWhatsAppTemplate: '. $e->getMessage());
+                throw new \yii\base\Exception('Exception when calling WhatsAppCampaignsApi->createWhatsAppTemplate: ' . $e->getMessage());
             }
         } else {
             throw new \yii\base\Exception('91: Template not valid');
@@ -113,7 +113,7 @@ class MessageProvider extends BaseProvider
             $this->waitForTemplateApproval($templateId);
             return;
         } catch (Exception $e) {
-            throw new \yii\base\Exception('Exception when approving WhatsappTemplate: '. $e->getMessage());
+            throw new \yii\base\Exception('Exception when approving WhatsappTemplate: ' . $e->getMessage());
         }
     }
 
@@ -133,14 +133,14 @@ class MessageProvider extends BaseProvider
         try {
             $recipientList = $this->createWhatsappCampaignRecipientList($message->getTo());
         } catch (Exception $e) {
-            throw new \yii\base\Exception('Exception when creating WhatsAppCampaignRecipientList: '. $e->getMessage());
+            throw new \yii\base\Exception('Exception when creating WhatsAppCampaignRecipientList: ' . $e->getMessage());
         }
         $whatsappCampaign->setRecipients($recipientList);
         $whatsappCampaign->setScheduledAt(gmdate('Y-m-d\TH:i:s\Z', strtotime('+1 minutes')));
         try {
             $whatsappCampaignApiInstance->createWhatsAppCampaign($whatsappCampaign);
         } catch (Exception $e) {
-            throw new \yii\base\Exception('Exception when calling WhatsAppCampaignsApi->createWhatsAppCampaign: '. $e->getMessage());
+            throw new \yii\base\Exception('Exception when calling WhatsAppCampaignsApi->createWhatsAppCampaign: ' . $e->getMessage());
         }
     }
 
@@ -161,7 +161,7 @@ class MessageProvider extends BaseProvider
         try {
             $responseArray = $whatsappCampaignApiInstance->getWhatsAppTemplates($timeBefore10Minutes, $timeNow);
         } catch (Exception $e) {
-            throw new \yii\base\Exception('Exception when calling WhatsAppCampaignsApi->getWhatsAppTemplates: '. $e->getMessage());
+            throw new \yii\base\Exception('Exception when calling WhatsAppCampaignsApi->getWhatsAppTemplates: ' . $e->getMessage());
         }
         $templates = $responseArray->getTemplates();
         // search for the templateId in the responseArray
@@ -174,7 +174,7 @@ class MessageProvider extends BaseProvider
                     sleep(5);
                     return $this->waitForTemplateApproval($templateId);
                 } else {
-                    throw new \yii\base\Exception('Template was rejected: '. $template->getStatus());
+                    throw new \yii\base\Exception('Template was rejected: ' . $template->getStatus());
                 }
             }
         }
